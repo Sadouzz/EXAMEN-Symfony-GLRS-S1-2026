@@ -37,7 +37,7 @@
                         <td>{{ rdv.typePrestation }}</td>
                         <td>{{ rdv.dateDemande|date('d/m/Y') }}</td>
                         <td>
-                            <a href={{ path('app_rdv_accepter', {idRDV:rdv.id}) }} class="btn btn-sm btn-success">
+                            <a href={{ path('app_rdv_accepter', {id:rdv.id}) }} class="btn btn-sm btn-success">
                                 <i class="fas fa-edit"></i> Valider
                             </a>
                         </td>

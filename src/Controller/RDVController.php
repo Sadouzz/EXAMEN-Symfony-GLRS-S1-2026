@@ -2,13 +2,16 @@
 
 namespace App\Controller;
 
+use Doctrine\ORM\EntityManagerInterface;
 use App\Repository\RDVRepository;
 use App\DTO\RDVListDto;
 use App\Entity\RDV;
+use App\Entity\Enum\EtatRDV;
 use App\Form\RDVValidType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\HttpFoundation\Request;
 
 final class RDVController extends AbstractController
 {
@@ -25,7 +28,7 @@ final class RDVController extends AbstractController
         ]);
     }
     
-    #[Route('/rdv/{idRDV}', name: 'app_rdv_accepter')]
+    #[Route('/rdv/{id}', name: 'app_rdv_accepter')]
     public function accepter(RDV $rdv, Request $request, EntityManagerInterface $em): Response
     {
         $form = $this->createForm(RDVValidType::class, $rdv);
