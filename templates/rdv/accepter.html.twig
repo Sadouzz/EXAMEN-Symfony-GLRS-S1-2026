@@ -1,0 +1,20 @@
+{% extends 'basePatient.html.twig' %}
+
+{% block title %}Accepter une demande de RDV{% endblock %}
+
+{% block body %}
+<main class="main" id="main">
+        <div class="pagetitle">
+            <h3>Acceptation d'un Rendez-Vous</h3>
+        </div>
+
+    <div class="card-body">
+            {{ form(formRDV) }}
+        </div>
+
+
+        
+        
+    </main>
+
+{% endblock %}

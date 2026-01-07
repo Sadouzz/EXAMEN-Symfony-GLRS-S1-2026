@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des rendez-vous{% endblock %}
+
+{% block body %}
+<main class="main" id="main">
+        <div class="pagetitle">
+            <h3>Liste des Rendez-Vous</h3>
+        </div>
+
+        <div class="card shadow border-0 rounded-0">
+            <div class="p-3 border-bottom">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h5 class="card-title m-0">
+                        Liste des Rendez-vous
+                    </h5>
+                </div>
+            </div>
+            <table class="table table-striped mb-0">
+                <thead class="table-dark">
+                <tr>
+                    <th>Patient</th>
+                    <th>Type de Rendez-Vous</th>
+                    <th>Type de Consultation</th>
+                    <th>Type de Prestation</th>
+                    <th>Date demande</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                {% for rdv in rdvs %}
+                    <tr>
+                        <td>{{ rdv.name }}</td>
+                        <td>{{ rdv.typeRDV }}</td>
+                        <td>{{ rdv.typeConsultation }}</td>
+                        <td>{{ rdv.typePrestation }}</td>
+                        <td>{{ rdv.dateDemande|date('d/m/Y') }}</td>
+                        <td>
+                            <a href={{ path('app_rdv_accepter', {idRDV:rdv.id}) }} class="btn btn-sm btn-success">
+                                <i class="fas fa-edit"></i> Valider
+                            </a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="6" class="text-center text-muted py-4">
+                            Aucun rdv trouvée
+                        </td>
+                    </tr>
+                {% endfor %}
+
+                </tbody>
+            </table>
+        </div>
+        
+    </main>
+{% endblock %}
